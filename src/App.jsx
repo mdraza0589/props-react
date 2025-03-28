@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 function App() {
   const [data, setData] = useState({
     name: '',
-    email: ''
+    email: '',
+    image:''
   })
   const [users, setUsers] = useState([])
   const [isActive, setIsActive] = useState(null)
@@ -31,7 +32,8 @@ function App() {
     }
     setData({
       name: '',
-      email: ''
+      email: '',
+      image:''
     })
   }
 
@@ -57,16 +59,21 @@ function App() {
     setIsActive(null)
     setData({
       name:'',
-      email:''
+      email:'',
+      image:''
     })
   }
 
   return (
     <div>
-      <form className="max-w-sm mx-auto shadow p-4">
+      <form className="max-w-sm m-10 mx-auto rounded-2xl shadow-2xl p-4">
         <div className="mb-5">
-          <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
+          <label htmlFor="name" className="block mb-2  text-sm font-medium text-gray-900 dark:text-white">Your name</label>
           <input type="text" value={data.name} id="name" onChange={handleChange} name='name' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Name" required />
+        </div>
+        <div className="mb-5">
+          <label htmlFor="image" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your image</label>
+          <input type="text" value={data.image} id="image" onChange={handleChange} name='image' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Name" required />
         </div>
         <div className="mb-5">
           <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
@@ -85,6 +92,7 @@ function App() {
         <table className='w-full'>
           <thead>
             <tr className='border'>
+              <th className='p-4 text-center'>image</th>
               <th className='p-4'>Name</th>
               <th className='p-4'>Email</th>
               <th className='p-4'>Action</th>
@@ -93,6 +101,7 @@ function App() {
           <tbody>
             {users.length > 0 ? users.map((user, index) => {
               return <tr key={index} className='border'>
+                <td className='p-4 text-center'><img className='w-15 text-center rounded-2xl' src={user.image} alt="img" /></td>
                 <td className='p-4 text-center'>{user.name}</td>
                 <td className='p-4 text-center'>{user.email}</td>
                 <td className='p-4 text-center'>
@@ -101,7 +110,7 @@ function App() {
                 </td>
               </tr>
             }) : <tr>
-              <td colSpan="3" className='p-4 text-center text-gray-500 font-bold' >No data Available</td>
+              <td colSpan="4" className='p-4 text-center text-gray-500 font-bold' >No data Available</td>
             </tr>
             }
           </tbody>
