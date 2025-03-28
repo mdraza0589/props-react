@@ -8,7 +8,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [isActive, setIsActive] = useState(null)
 
-
+    // this is crud
   const handleChange = (e) => {
     setData({
       ...data, [e.target.name]: e.target.value
